@@ -229,9 +229,9 @@ int main() {
             break;
 
             default:
-            printf("Op ?o inv lida\n");
+            printf("Opção inválida\n");
             break;
-        } break;
+        }
 
         if ((CompPop == CompArea) || (CompPop == CompPIB) || (CompPop == CompPontos) || (CompPop == CompDensidade) || 
         (CompPop == CompPIBPerCapita) || (CompPop == CompSup) && (CompPop == 1) || (CompArea == 1) || (CompPIB == 1) || (CompPontos == 1) || 
@@ -241,30 +241,76 @@ int main() {
         (CompPop == CompPIBPerCapita) || (CompPop == CompSup) && (CompPop == 0) || (CompArea == 0) || (CompPIB == 0) || (CompPontos == 0) || 
         (CompDensidade == 0) || (CompPIBPerCapita == 0) || (CompSup == 0)) {
             Comp2 = 1;
-        } else {
+        } else if ((CompPop == CompArea) || (CompPop == CompPIB) || (CompPop == CompPontos) || (CompPop == CompDensidade) || (CompPop == CompPIBPerCapita) || 
+        (CompPop == CompSup) && (CompPop == 2) || (CompArea == 2) || (CompPIB == 2) || (CompPontos == 2) || (CompDensidade == 2) || (CompPIBPerCapita == 2) ||
+        (CompSup == 2)) {
+            CompEmpate = 1;
+        } else if ((CompPop == 2) || (CompArea == 2) || (CompPIB == 2) || (CompPontos == 2) || (CompDensidade == 2) || (CompPIBPerCapita == 2) || 
+        (CompSup == 2) && (CompPop == 1) || (CompArea == 1) || (CompPIB == 1) || (CompPontos == 1) || (CompDensidade == 1) || (CompPIBPerCapita == 1) || 
+        (CompSup == 1)) {
             Comp1 = 0;
+        } else if ((CompPop == 2) || (CompArea == 2) || (CompPIB == 2) || (CompPontos == 2) || (CompDensidade == 2) || (CompPIBPerCapita == 2) || 
+        (CompSup == 2) && (CompPop == 0) || (CompArea == 0) || (CompPIB == 0) || (CompPontos == 0) || (CompDensidade == 0) || (CompPIBPerCapita == 0) || 
+        (CompSup == 0)) {
             Comp2 = 0;
+        } else {
+            CompEmpate = 0;
         }
 
         printf("\nCidade 01: %s\nCidade 02: %s\n", Nome_da_cidade, Nome_da_cidade2);
         if (opcao2 == 1 || opcao3 == 1) {
-            printf("Atributo comparado:\n População 01 -%d habitantes\n População 02 -%d habitantes\n", Populacao, Populacao2);
+            printf("Atributo comparado:\n População 01 : %d habitantes\n População 02 : %d habitantes\n", Populacao, Populacao2);
         } else if (opcao2 == 2 || opcao3 == 2) {
-            printf("Atributo comparado:\n Área 01 -%.2f KM2\n Área 02 -%.2f KM2\n", Area, Area2);
+            printf("Atributo comparado:\n Área 01 : %.2f KM2\n Área 02 : %.2f KM2\n", Area, Area2);
         } else if (opcao2 == 3 || opcao3 == 3) {
-            printf("Atributo comparado:\n PIB 01 -%.2f Bilhões de reais\n PIB 02 -%.2f Bilhões de reais\n", PIB, PIB2);
+            printf("Atributo comparado:\n PIB 01 : %.2f Bilhões de reais\n PIB 02 : %.2f Bilhões de reais\n", PIB, PIB2);
         } else if (opcao2 == 4 || opcao3 == 4) {
-            printf("Atributo comparado:\n Número de pontos turísticos 01 -%d\n Número de pontos turísticos 02 -%d\n", Numero_de_pontos_turisticos, Numero_de_pontos_turisticos2);
+            printf("Atributo comparado:\n Número de pontos turísticos 01 : %d\n Número de pontos turísticos 02 : %d\n", Numero_de_pontos_turisticos, Numero_de_pontos_turisticos2);
         } else if (opcao2 == 5 || opcao3 == 5) {
-            printf("Atributo comparado:\n Densidade demográfica 01 -%.2f habitantes/KM2\n Densidade demográfica 02 -%.2f habitantes/KM2\n", densidade_demografica, densidade_demografica2);
+            printf("Atributo comparado:\n Densidade demográfica 01 : %.2f habitantes/KM2\n Densidade demográfica 02 : %.2f habitantes/KM2\n", densidade_demografica, densidade_demografica2);
         } else if (opcao2 == 6 || opcao3 == 6) {
-            printf("Atributo comparado:\n PIB per capita 01 -%.2f reais\n PIB per capita 02 -%.2f reais\n", PIB_per_capita, PIB_per_capita2);
+            printf("Atributo comparado:\n PIB per capita 01 : %.2f reais\n PIB per capita 02 : %.2f reais\n", PIB_per_capita, PIB_per_capita2);
         } else if (opcao2 == 7 || opcao3 == 7) {
-            printf("Atributo comparado:\n Super Poder 01 -%.2f\n Super Poder 02 -%.2f\n", Super_Poder1, Super_Poder2);
+            printf("Atributo comparado:\n Super Poder 01 : %.2f\n Super Poder 02 : %.2f\n", Super_Poder1, Super_Poder2);
+        }else {
+            printf("Atributo comparado inválido\n");
         }
-        
 
-        case 2:
+        if (opcao2 == 7 || opcao3 == 7) {
+            printf("Atributo comparado:\n Super Poder 01 : %.2f\n Super Poder 02 : %.2f\n", Super_Poder1, Super_Poder2);
+        } else if (opcao2 == 6 || opcao3 == 6) {
+            printf("Atributo comparado:\n PIB per capita 01 : %.2f reais\n PIB per capita 02 : %.2f reais\n", PIB_per_capita, PIB_per_capita2);
+        } else if (opcao2 == 5 || opcao3 == 5) {
+            printf("Atributo comparado:\n Densidade demográfica 01 : %.2f habitantes/KM2\n Densidade demográfica 02 : %.2f habitantes/KM2\n", densidade_demografica, densidade_demografica2);
+        } else if (opcao2 == 4 || opcao3 == 4) {
+            printf("Atributo comparado:\n Número de pontos turísticos 01 : %d\n Número de pontos turísticos 02 : %d\n", Numero_de_pontos_turisticos, Numero_de_pontos_turisticos2);
+        } else if (opcao2 == 3 || opcao3 == 3) {
+            printf("Atributo comparado:\n PIB 01 : %.2f Bilhões de reais\n PIB 02 : %.2f Bilhões de reais\n", PIB, PIB2);
+        } else if (opcao2 == 2 || opcao3 == 2) {
+            printf("Atributo comparado:\n Área 01 : %.2f KM2\n Área 02 : %.2f KM2\n", Area, Area2);
+        } else if (opcao2 == 1 || opcao3 == 1) {
+            printf("Atributo comparado:\n População 01 : %d habitantes\n População 02 : %d habitantes\n", Populacao, Populacao2);
+        } else {
+            printf("Atributo comparado inválido\n");
+        }
+
+        if ((CompEmpate == 0) || ((Comp1 == 1) && (Comp2 == 1))) {
+             printf("\nEmpate! Ambas as cartas ganharam 1 ponto!\n");
+    } else if (Comp2 == 0) {
+             printf("\n A carta 02 ganhou com 1 ponto!\n");
+    } else if (Comp1 == 0) {
+             printf("\n A carta 01 ganhou com 1 ponto!\n");
+    } else if (CompEmpate == 1) {
+             printf("\nEmpate! Não houve pontuação individual!\n");
+    } else if (Comp2 == 1) {
+             printf("\n A carta 02 venceu com 2 pontos!\n");
+    } else if (Comp1 == 1) {
+             printf("\n A carta 01 venceu com 2 pontos!\n");
+    } else {
+             printf("Erro na comparação\n");
+       } break;
+        
+            case 2:
             // Impress?o dos dados.
             printf("\n\nDados da carta 01:\n");
             printf("Estado: %c\n", Estado);
