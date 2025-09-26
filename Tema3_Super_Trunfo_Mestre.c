@@ -12,13 +12,8 @@ int main() {
     Super_Poder1 = 0, Super_Poder2 = 0, Comp1 = 0, Comp2 = 0, CompEmpate = 0;
     char atributos[8][30] = {"Atributo invalido", "Populacao", "Area", "PIB", "Numero de pontos turisticos", "Densidade demografica", "PIB per capita", "Super Poder"};
     char Estado, Nome_da_cidade [20], Codigo_da_carta [4], Codigo_str[3], Estado2, Nome_da_cidade2 [20], Codigo_da_carta2 [4], Codigo_str2[3];
-    int  CompPop, CompArea, CompPIB, CompPontos, CompDensidade, CompPIBPerCapita, CompSup;
     int  Codigo, Codigo2, opcao, opcao2, opcao3;
-    float Carta1[8] =  {0, Populacao, Area, PIB, Numero_de_pontos_turisticos, densidade_demografica, PIB_per_capita, Super_Poder1};
-    float Carta2[8] =  {0, Populacao2, Area2, PIB2, Numero_de_pontos_turisticos2, densidade_demografica2, PIB_per_capita2, Super_Poder2};
     
-    
-
     // Entrada de dados para carta 01.
     printf("Bem-vindo ao Super Trunfo - Desafio Mestre!\n");
     printf("Esta sera sua primeira carta (01) entao:\nDigite a letra 'A-H' que representa seu estado: ");
@@ -98,46 +93,6 @@ int main() {
         printf("7 - Super Poder\n");
         scanf("%d", &opcao2);
 
-        switch (opcao2) {
-            case 1:
-            CompPop = Populacao > Populacao2 ? 1 : 0;
-            CompPop = Populacao == Populacao2 ? 2 : CompPop;
-            break;
-
-            case 2:
-            CompArea = Area > Area2 ? 1 : 0;
-            CompArea = Area == Area2 ? 2 : CompArea;
-            break;
-    
-            case 3:
-            CompPIB = PIB > PIB2 ? 1 : 0;
-            CompPIB = PIB == PIB2 ? 2 : CompPIB;
-            break;
-
-            case 4:
-            CompPontos = Numero_de_pontos_turisticos > Numero_de_pontos_turisticos2 ? 1 : 0;
-            CompPontos = Numero_de_pontos_turisticos == Numero_de_pontos_turisticos2 ? 2 : CompPontos;
-            break;
-
-            case 5:
-            CompDensidade = densidade_demografica < densidade_demografica2 ? 1 : 0;
-            CompDensidade = densidade_demografica == densidade_demografica2 ? 2 : CompDensidade;
-            break;
-
-            case 6:
-            CompPIBPerCapita = PIB_per_capita > PIB_per_capita2 ? 1 : 0;
-            CompPIBPerCapita = PIB_per_capita == PIB_per_capita2 ? 2 : CompPIBPerCapita;
-            break;
-
-            case 7:
-            CompSup = Super_Poder1 > Super_Poder2 ? 1 : 0;
-            CompSup = Super_Poder1 == Super_Poder2 ? 2 : CompSup;
-            break;
-
-            default:
-            printf("Opcao invalida\n");
-            break;
-        }
     // Switch de comparacao do segundo atributo.
         printf("\nSelecione o segundo atributo:\n\n");
         if (opcao2 ==1) {
@@ -197,48 +152,10 @@ int main() {
             printf("6 - PIB per capita\n");
             scanf("%d", &opcao3);
         }
-
-        switch (opcao3) {
-            case 1:
-            CompPop = Populacao > Populacao2 ? 1 : 0;
-            CompPop = Populacao == Populacao2 ? 2 : CompPop;
-            break;
-
-            case 2:
-            CompArea = Area > Area2 ? 1 : 0;
-            CompArea = Area == Area2 ? 2 : CompArea;
-            break;
+    // Arrays para armazenar os valores das cartas.
+    float Carta1[8] =  {0, Populacao, Area, PIB, Numero_de_pontos_turisticos, densidade_demografica, PIB_per_capita, Super_Poder1};
+    float Carta2[8] =  {0, Populacao2, Area2, PIB2, Numero_de_pontos_turisticos2, densidade_demografica2, PIB_per_capita2, Super_Poder2};
     
-            case 3:
-            CompPIB = PIB > PIB2 ? 1 : 0;
-            CompPIB = PIB == PIB2 ? 2 : CompPIB;
-            break;
-
-            case 4:
-            CompPontos = Numero_de_pontos_turisticos > Numero_de_pontos_turisticos2 ? 1 : 0;
-            CompPontos = Numero_de_pontos_turisticos == Numero_de_pontos_turisticos2 ? 2 : CompPontos;
-            break;
-
-            case 5:
-            CompDensidade = densidade_demografica < densidade_demografica2 ? 1 : 0;
-            CompDensidade = densidade_demografica == densidade_demografica2 ? 2 : CompDensidade;
-            break;
-
-            case 6:
-            CompPIBPerCapita = PIB_per_capita > PIB_per_capita2 ? 1 : 0;
-            CompPIBPerCapita = PIB_per_capita == PIB_per_capita2 ? 2 : CompPIBPerCapita;
-            break;
-
-            case 7:
-            CompSup = Super_Poder1 > Super_Poder2 ? 1 : 0;
-            CompSup = Super_Poder1 == Super_Poder2 ? 2 : CompSup;
-            break;
-
-            default:
-            printf("Opção inválida\n");
-            break;
-        }
-
     // Logica para selecionar qual carta ganhou.
         if (Carta1[opcao2] > Carta2[opcao2]) {Comp1++;
         } else if (Carta1[opcao2] < Carta2[opcao2]) {Comp2++;
@@ -251,21 +168,21 @@ int main() {
     // Impressao do resultado da comparacao.
         printf("\nCidade 01: %s\nCidade 02: %s\n", Nome_da_cidade, Nome_da_cidade2);
         printf("Atributo 01: %s\nAtributo 02: %s\n", atributos[opcao2], atributos[opcao3]);
-        printf("Carta 01 (%s): %.f\nCarta 02 (%s): %.2f\n", atributos[opcao2], Carta1[opcao2], atributos[opcao2], Carta2[opcao2]);
+        printf("Carta 01 (%s): %.2f\nCarta 02 (%s): %.2f\n", atributos[opcao2], Carta1[opcao2], atributos[opcao2], Carta2[opcao2]);
         printf("Carta 01 (%s): %.2f\nCarta 02 (%s): %.2f\n", atributos[opcao3], Carta1[opcao3], atributos[opcao3], Carta2[opcao3]);
 
         if (Comp1 == 2) {
-            printf("\nA carta 01 venceu com 2 pontos!\n");
+            printf("\nA carta 01 venceu com 2 pontos!\n\n");
         } else if (Comp2 == 2) {
-            printf("\nA carta 02 venceu com 2 pontos!\n");
+            printf("\nA carta 02 venceu com 2 pontos!\n\n");
         } else if (Comp1 == 1 && Comp2 == 1) {
-            printf("\nHouve um empate com 1 ponto para cada carta!\n");
+            printf("\nHouve um empate com 1 ponto para cada carta!\n\n");
         } else if (CompEmpate == 2) {
-            printf("\nHouve um empate, nenhum ponto para ambas as cartas!\n");
+            printf("\nHouve um empate, nenhum ponto para ambas as cartas!\n\n");
         } else if (Comp1 == 1 && CompEmpate == 1) {
-            printf("\nA carta 01 venceu com 1 ponto!\n");
+            printf("\nA carta 01 venceu com 1 ponto!\n\n");
         } else if (Comp2 == 1 && CompEmpate == 1) {
-            printf("\nA carta 02 venceu com 1 ponto!\n");
+            printf("\nA carta 02 venceu com 1 ponto!\n\n");
         }
         break;
         
